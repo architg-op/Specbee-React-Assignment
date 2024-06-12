@@ -24,7 +24,7 @@ export default function MediaCard(props) {
             {props.date}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
-            {props.title}
+            <b>{props.title}</b>
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {props.body}
