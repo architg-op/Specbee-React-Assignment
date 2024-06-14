@@ -11,7 +11,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 export default function CheckboxList(props) {
   const [checked, setChecked] = React.useState([0]);
   const filterData = props.data;
-  console.log('filterData ', filterData);
+  // console.log('filterData ', filterData);
   const handleToggle = (value: number) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];

@@ -5,11 +5,28 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import './Article.css';
+import parse from 'html-react-parser';
 
 export default function MediaCard(props) {
+  const entities = {
+    '&#039;': "'",
+    '&quot;': '"',
+    '&ntilde;': 'ñ',
+    '&eacute;': 'é',
+    '&amp;': '&',
+    '&uuml;': 'ü',
+  };
   let formattedDate = new Date(props.date);
   formattedDate = formattedDate.toDateString();
   // console.log(`formattedDate `, formattedDate);
+  const articleTitle = props.title.replace(
+    /&#?\w+;/,
+    (match) => entities[match]
+  );
+  const articleBody = parse(props.body);
+
+  console.log('articleTitle ', articleTitle);
+  console.log('articleBody ', articleBody);
 
   return (
     <>
@@ -38,13 +55,13 @@ export default function MediaCard(props) {
                 {formattedDate.substring(3)}
               </Typography>
               <Typography gutterBottom variant="h5" component="div">
-                <b>{props.title}</b>
+                <b>{articleTitle}</b>
               </Typography>
             </div>
           </div>
 
           <Typography variant="body2" color="text.secondary">
-            {props.body}
+            {articleBody}
           </Typography>
         </CardContent>
         <CardActions
