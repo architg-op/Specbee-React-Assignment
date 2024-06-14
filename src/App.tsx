@@ -1,10 +1,9 @@
-import { useState, React } from 'react';
+import { useState } from 'react';
 import { MyContext } from './MyContext';
 import './App.css';
 
 import Articles from './components/Articles';
 import Filters from './components/Filters';
-import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 
 function App() {
@@ -16,14 +15,14 @@ function App() {
 
   return (
     <MyContext.Provider
-      value={{
+      value={JSON.stringify({
         articles,
         setArticles,
         dateApplied,
         setDateApplied,
         apiLoader,
         setApiLoader,
-      }}
+      })}
     >
       <div className="mainwrapper">
         {apiLoader ? (
