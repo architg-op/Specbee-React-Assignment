@@ -11,15 +11,15 @@ export default function Filters() {
   function eliminateDuplicates(numbers) {
     const sortedArray = [];
 
-    numbers.forEach(function (element, index) {
+    numbers?.forEach(function (element, index) {
       if (numbers.indexOf(element) === index) {
         sortedArray.push(element);
       }
     });
     return sortedArray;
   }
-  let categories = articles.map((article) => article.source);
-  let authors = articles.map((article) => article.author);
+  let categories = articles?.map((article) => article?.source);
+  let authors = articles?.map((article) => article.author);
   let sortby = ['Date', 'Title'];
   categories = eliminateDuplicates(categories);
   authors = eliminateDuplicates(authors);

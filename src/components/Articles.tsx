@@ -4,21 +4,21 @@ import Pagination from '@mui/material/Pagination';
 import { MyContext } from '../MyContext';
 
 function Articles() {
-  const { articles, setArticles, setApiLoader } = useContext(MyContext);
+  const { articles, setArticles } = useContext(MyContext);
 
   useEffect(() => {
     // setApiLoader(true);
     fetch('https://dev-storm-rest-api.pantheonsite.io/api/v1/news')
       .then((res) => res.json())
-      .then((data) => setArticles(data))
-      .then(() => setApiLoader(false));
+      .then((data) => setArticles(data));
+    // .then(() => setApiLoader(false));
   }, []);
 
   console.log(articles);
 
   return (
     <>
-      {articles.map((article) => {
+      {articles?.map((article) => {
         return (
           <Article
             date={article.date}

@@ -15,14 +15,14 @@ function App() {
 
   return (
     <MyContext.Provider
-      value={JSON.stringify({
+      value={{
         articles,
         setArticles,
         dateApplied,
         setDateApplied,
         apiLoader,
         setApiLoader,
-      })}
+      }}
     >
       <div className="mainwrapper">
         {apiLoader ? (

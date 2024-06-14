@@ -19,7 +19,7 @@ export default function MediaCard(props) {
   let formattedDate = new Date(props.date);
   formattedDate = formattedDate.toDateString();
   // console.log(`formattedDate `, formattedDate);
-  const articleTitle = props.title.replace(
+  const articleTitle = props?.title.replace(
     /&#?\w+;/,
     (match) => entities[match]
   );
