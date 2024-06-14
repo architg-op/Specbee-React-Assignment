@@ -9,3 +9,7 @@
 #right {
   flex: 1;
 }
+
+.mainwrapper {
+  margin: 50px;
+}

@@ -25,7 +25,7 @@ function App() {
         setApiLoader,
       }}
     >
-      <Box sx={{ width: '100%' }}>
+      <div className="mainwrapper">
         {apiLoader ? (
           <LinearProgress />
         ) : (
@@ -38,7 +38,7 @@ function App() {
             </div>
           </div>
         )}
-      </Box>
+      </div>
     </MyContext.Provider>
   );
 }
