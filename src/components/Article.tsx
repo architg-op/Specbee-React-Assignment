@@ -12,7 +12,9 @@ export default function MediaCard(props) {
 
   return (
     <>
-      <Card sx={{ maxWidth: 2000, paddingLeft: 50 }}>
+      <Card
+      // sx={{ maxWidth: 2000, paddingLeft: 50 }}
+      >
         <CardMedia
           sx={{ height: 40 }}
           image={props.image}
@@ -34,7 +36,11 @@ export default function MediaCard(props) {
             {props.body}
           </Typography>
         </CardContent>
-        <CardActions sx={{ paddingBottom: 5 }}>{props.author}</CardActions>
+        <CardActions
+        // sx={{ paddingBottom: 5 }}
+        >
+          {props.author}
+        </CardActions>
       </Card>
       <Divider />
     </>

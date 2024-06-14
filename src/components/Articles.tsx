@@ -43,7 +43,7 @@ function Articles() {
         variant="outlined"
         color="primary"
         count={10}
-        sx={{ paddingLeft: 160, paddingTop: 5, paddingBottom: 5 }}
+        // sx={{ paddingLeft: 160, paddingTop: 5, paddingBottom: 5 }}
       />
     </Box>
   );
