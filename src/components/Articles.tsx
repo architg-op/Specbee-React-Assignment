@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState, React, useContext, useEffect } from 'react';
 import Article from './Article';
 import Pagination from '@mui/material/Pagination';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import { MyContext } from '../MyContext';
 
 function Articles() {
-  const [articles, setArticles] = useState([]);
+  const { articles, setArticles } = useContext(MyContext);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

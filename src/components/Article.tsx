@@ -6,6 +6,10 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
 export default function MediaCard(props) {
+  let formattedDate = new Date(props.date);
+  formattedDate = formattedDate.toDateString();
+  // console.log(`formattedDate `, formattedDate);
+
   return (
     <>
       <Card sx={{ maxWidth: 2000, paddingLeft: 50 }}>
@@ -21,7 +25,7 @@ export default function MediaCard(props) {
             color="text.secondary"
             component="div"
           >
-            {props.date}
+            {formattedDate.substring(3)}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
             <b>{props.title}</b>
