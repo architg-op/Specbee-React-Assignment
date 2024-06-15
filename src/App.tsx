@@ -10,8 +10,9 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [dateApplied, setDateApplied] = useState(false);
   const [apiLoader, setApiLoader] = useState(false);
+  const [filtersChecked, setFiltersChecked] = useState([]);
 
-  console.log('apiLoader ', apiLoader);
+  // console.log('apiLoader ', apiLoader);
 
   return (
     <MyContext.Provider
@@ -22,6 +23,8 @@ function App() {
         setDateApplied,
         apiLoader,
         setApiLoader,
+        filtersChecked,
+        setFiltersChecked,
       }}
     >
       <div className="mainwrapper">

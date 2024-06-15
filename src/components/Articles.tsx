@@ -4,7 +4,21 @@ import Pagination from '@mui/material/Pagination';
 import { MyContext } from '../MyContext';
 
 function Articles() {
-  const { articles, setArticles } = useContext(MyContext);
+  const { articles, setArticles, filtersChecked, setFiltersChecked } =
+    useContext(MyContext);
+  filtersChecked.includes('Title')
+    ? articles.sort(function (a, b) {
+        var textA = a.title.toUpperCase();
+        var textB = b.title.toUpperCase();
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
+      })
+    : articles.sort(function (b, a) {
+        var textA = a.title.toUpperCase();
+        var textB = b.title.toUpperCase();
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
+      });
+
+  console.log('filtersChecked', filtersChecked);
 
   useEffect(() => {
     // setApiLoader(true);
@@ -14,7 +28,7 @@ function Articles() {
     // .then(() => setApiLoader(false));
   }, []);
 
-  console.log(articles);
+  // console.log(articles);
 
   return (
     <>

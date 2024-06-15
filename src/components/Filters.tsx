@@ -24,8 +24,8 @@ export default function Filters() {
   categories = eliminateDuplicates(categories);
   authors = eliminateDuplicates(authors);
   sortby = eliminateDuplicates(sortby);
-  console.log('categories ', categories);
-  console.log('authors ', authors);
+  // console.log('categories ', categories);
+  // console.log('authors ', authors);
 
   return (
     <>

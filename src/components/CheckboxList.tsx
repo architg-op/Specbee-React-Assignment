@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, React, useContext } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -7,14 +7,16 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
+import { MyContext } from '../MyContext.tsx';
 
 export default function CheckboxList(props) {
-  const [checked, setChecked] = React.useState([0]);
+  const { filtersChecked, setFiltersChecked } = useContext(MyContext);
+
   const filterData = props.data;
   // console.log('filterData ', filterData);
   const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+    const currentIndex = filtersChecked.indexOf(value);
+    const newChecked = [...filtersChecked];
 
     if (currentIndex === -1) {
       newChecked.push(value);
@@ -22,7 +24,7 @@ export default function CheckboxList(props) {
       newChecked.splice(currentIndex, 1);
     }
 
-    setChecked(newChecked);
+    setFiltersChecked(newChecked);
   };
 
   return (
@@ -40,7 +42,7 @@ export default function CheckboxList(props) {
               <ListItemIcon>
                 <Checkbox
                   edge="start"
-                  checked={checked.indexOf(value) !== -1}
+                  filtersChecked={filtersChecked.indexOf(value) !== -1}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ 'aria-labelledby': labelId }}

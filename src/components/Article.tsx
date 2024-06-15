@@ -25,8 +25,8 @@ export default function MediaCard(props) {
   );
   const articleBody = parse(props.body);
 
-  console.log('articleTitle ', articleTitle);
-  console.log('articleBody ', articleBody);
+  // console.log('articleTitle ', articleTitle);
+  // console.log('articleBody ', articleBody);
 
   return (
     <>
