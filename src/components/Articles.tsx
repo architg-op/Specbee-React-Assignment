@@ -4,8 +4,14 @@ import Pagination from '@mui/material/Pagination';
 import { MyContext } from '../MyContext';
 
 function Articles() {
-  const { articles, setArticles, filtersChecked, setFiltersChecked } =
-    useContext(MyContext);
+  const {
+    articles,
+    setArticles,
+    filtersChecked,
+    setFiltersChecke,
+    apiLoader,
+    setApiLoader,
+  } = useContext(MyContext);
   filtersChecked.includes('Title')
     ? articles.sort(function (a, b) {
         var textA = a.title.toUpperCase();

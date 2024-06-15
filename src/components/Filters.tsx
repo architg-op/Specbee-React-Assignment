@@ -19,8 +19,11 @@ export default function Filters() {
     return sortedArray;
   }
   let categories = articles?.map((article) => article?.source);
+  categories.sort();
   let authors = articles?.map((article) => article.author);
+  authors.sort();
   let sortby = ['Date', 'Title'];
+  sortby.sort();
   categories = eliminateDuplicates(categories);
   authors = eliminateDuplicates(authors);
   sortby = eliminateDuplicates(sortby);
