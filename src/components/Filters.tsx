@@ -1,12 +1,13 @@
-import { useState, React, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { MyContext } from '../MyContext.tsx';
-import { Checkbox } from '@mui/material/Checkbox';
 
-import CheckboxList from './CheckboxList';
+import CategoryCheckboxList from './CategoryCheckboxList.tsx';
+import AuthorCheckboxList from './AuthorCheckboxList.tsx';
+import FilterCheckboxList from './FilterCheckboxList.tsx';
 import Typography from '@mui/material/Typography';
 
 export default function Filters() {
-  const { articles, setArticles } = useContext(MyContext);
+  const { articles } = useContext(MyContext);
 
   function eliminateDuplicates(numbers) {
     const sortedArray = [];
@@ -35,15 +36,15 @@ export default function Filters() {
       <Typography variant="h6" gutterBottom>
         Category
       </Typography>
-      <CheckboxList data={categories} />
+      <CategoryCheckboxList data={categories} />
       <Typography variant="h6" gutterBottom>
         Author
       </Typography>
-      <CheckboxList data={authors} />
+      <AuthorCheckboxList data={authors} />
       <Typography variant="h6" gutterBottom>
         Sort By
       </Typography>
-      <CheckboxList data={sortby} />
+      <FilterCheckboxList data={sortby} />
     </>
   );
 }

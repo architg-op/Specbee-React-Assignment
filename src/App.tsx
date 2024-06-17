@@ -9,8 +9,10 @@ import LinearProgress from '@mui/material/LinearProgress';
 function App() {
   const [articles, setArticles] = useState([]);
   const [dateApplied, setDateApplied] = useState(false);
-  const [filtersChecked, setFiltersChecked] = useState([]);
   const [apiLoader, setApiLoader] = useState(false);
+  const [categoriesChecked, setCategoriesChecked] = useState([]);
+  const [authorsChecked, setAuthorsChecked] = useState([]);
+  const [filtersChecked, setFiltersChecked] = useState([]);
 
   useEffect(() => {
     setApiLoader(true);
@@ -27,6 +29,10 @@ function App() {
         setArticles,
         dateApplied,
         setDateApplied,
+        categoriesChecked,
+        setCategoriesChecked,
+        authorsChecked,
+        setAuthorsChecked,
         filtersChecked,
         setFiltersChecked,
       }}

@@ -6,17 +6,17 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
-import CommentIcon from '@mui/icons-material/Comment';
 import { MyContext } from '../MyContext.tsx';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
-export default function CheckboxList(props) {
-  const { filtersChecked, setFiltersChecked } = useContext(MyContext);
+export default function CategoryCheckboxList(props) {
+  const { categoriesChecked, setCategoriesChecked } = useContext(MyContext);
 
   const filterData = props.data;
   // console.log('filterData ', filterData);
   const handleToggle = (value: number) => () => {
-    const currentIndex = filtersChecked.indexOf(value);
-    const newChecked = [...filtersChecked];
+    const currentIndex = categoriesChecked.indexOf(value);
+    const newChecked = [...categoriesChecked];
 
     if (currentIndex === -1) {
       newChecked.push(value);
@@ -24,8 +24,10 @@ export default function CheckboxList(props) {
       newChecked.splice(currentIndex, 1);
     }
 
-    setFiltersChecked(newChecked);
+    setCategoriesChecked(newChecked);
   };
+
+  console.log('categoriesChecked ', categoriesChecked);
 
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -33,7 +35,18 @@ export default function CheckboxList(props) {
         const labelId = `checkbox-list-label-${value}`;
 
         return (
-          <ListItem key={value} disablePadding>
+          <ListItem
+            key={value}
+            secondaryAction={
+              categoriesChecked?.includes(value) &&
+              (value === 'Date' || value === 'Title') ? (
+                <IconButton edge="end" aria-label="comments">
+                  <ArrowDownwardIcon />
+                </IconButton>
+              ) : null
+            }
+            disablePadding
+          >
             <ListItemButton
               role={undefined}
               onClick={handleToggle(value)}
@@ -42,7 +55,7 @@ export default function CheckboxList(props) {
               <ListItemIcon>
                 <Checkbox
                   edge="start"
-                  filtersChecked={filtersChecked.indexOf(value) !== -1}
+                  checked={categoriesChecked?.indexOf(value) !== -1}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ 'aria-labelledby': labelId }}

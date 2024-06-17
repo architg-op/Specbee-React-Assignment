@@ -4,40 +4,57 @@ import Pagination from '@mui/material/Pagination';
 import { MyContext } from '../MyContext';
 
 function Articles() {
-  const { articles, setArticles, filtersChecked, setFiltersChecked } =
+  const { articles, categoriesChecked, authorsChecked, filtersChecked } =
     useContext(MyContext);
   console.log('filtersChecked ', filtersChecked);
-  filtersChecked.length && filtersChecked[filtersChecked.length - 1] === 'Title'
-    ? articles.sort(function (a, b) {
-        var textA = a.title.toUpperCase();
-        var textB = b.title.toUpperCase();
-        return textA < textB ? -1 : textA > textB ? 1 : 0;
-      })
-    : articles.sort(function (b, a) {
-        var textA = a.title.toUpperCase();
-        var textB = b.title.toUpperCase();
-        return textA < textB ? -1 : textA > textB ? 1 : 0;
-      });
+  let filteredArticles = articles;
+  // filteredArticles.sort(function (b, a) {
+  //   var textA = a.date.toUpperCase();
+  //   var textB = b.date.toUpperCase();
+  //   return textA < textB ? -1 : textA > textB ? 1 : 0;
+  // });
 
-  filtersChecked.length && filtersChecked[filtersChecked.length - 1] === 'Date'
-    ? articles.sort(function (a, b) {
-        var textA = a.date.toUpperCase();
-        var textB = b.date.toUpperCase();
-        return textA < textB ? -1 : textA > textB ? 1 : 0;
-      })
-    : articles.sort(function (b, a) {
-        var textA = a.date.toUpperCase();
-        var textB = b.date.toUpperCase();
-        return textA < textB ? -1 : textA > textB ? 1 : 0;
-      });
+  // filtersChecked.length && filtersChecked[filtersChecked.length - 1] === 'Date'
+  //   ? filteredArticles.sort(function (a, b) {
+  //       var textA = a.date.toUpperCase();
+  //       var textB = b.date.toUpperCase();
+  //       return textA < textB ? -1 : textA > textB ? 1 : 0;
+  //     })
+  //   : null;
 
-  console.log('filtersChecked', filtersChecked);
+  if (categoriesChecked.length) {
+    filteredArticles = filteredArticles.filter((article) =>
+      categoriesChecked.includes(article.source)
+    );
+  }
+
+  if (authorsChecked.length) {
+    filteredArticles = filteredArticles.filter((article) =>
+      authorsChecked.includes(article.author)
+    );
+  }
+
+  // filtersChecked.length && filtersChecked[filtersChecked.length - 1] === 'Title'
+  //   ? articles.sort(function (a, b) {
+  //       var textA = a.title.toUpperCase();
+  //       var textB = b.title.toUpperCase();
+  //       return textA < textB ? -1 : textA > textB ? 1 : 0;
+  //     })
+  //   : articles.sort(function (b, a) {
+  //       var textA = a.title.toUpperCase();
+  //       var textB = b.title.toUpperCase();
+  //       return textA < textB ? -1 : textA > textB ? 1 : 0;
+  //     });
+
+  // console.log('filtersChecked', filtersChecked);
 
   // console.log(articles);
 
+  console.log('filtered articles length', filteredArticles.length);
+
   return (
     <>
-      {articles?.map((article) => {
+      {filteredArticles?.map((article) => {
         return (
           <Article
             date={article.date}

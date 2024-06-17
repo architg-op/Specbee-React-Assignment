@@ -57,6 +57,9 @@ export default function MediaCard(props) {
               <Typography gutterBottom variant="h5" component="div">
                 <b>{articleTitle}</b>
               </Typography>
+              <Typography gutterBottom variant="h5" component="div">
+                {props.source}
+              </Typography>
             </div>
           </div>
 
