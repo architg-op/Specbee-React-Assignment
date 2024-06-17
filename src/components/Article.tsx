@@ -32,9 +32,7 @@ export default function Article(props) {
 
   return (
     <>
-      <Card
-      // sx={{ maxWidth: 2000, paddingLeft: 50 }}
-      >
+      <Card>
         <CardMedia
           sx={{ height: 40 }}
           image={props.image}
@@ -47,7 +45,7 @@ export default function Article(props) {
                 src={`https://dev-storm-rest-api.pantheonsite.io/${props.image}`}
               />
             </div>
-            <div id="right">
+            <div id="middle">
               <Typography
                 gutterBottom
                 variant="body2"
@@ -61,7 +59,9 @@ export default function Article(props) {
                   <b>{articleTitle}</b>
                 </a>
               </Typography>
-              <Typography gutterBottom variant="h6" component="div">
+            </div>
+            <div id="right">
+              <Typography gutterBottom variant="p" component="div">
                 {props.source}
               </Typography>
             </div>
@@ -74,7 +74,7 @@ export default function Article(props) {
         <CardActions
         // sx={{ paddingBottom: 5 }}
         >
-          {props.author}
+          <b>{props.author}</b>
         </CardActions>
       </Card>
       <Divider />
