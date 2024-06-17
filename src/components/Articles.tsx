@@ -62,6 +62,7 @@ function Articles() {
               image={article.image}
               source={article.source}
               author={article.author}
+              url={article.url}
             />
           );
         })

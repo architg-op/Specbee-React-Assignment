@@ -7,7 +7,7 @@ import Divider from '@mui/material/Divider';
 import './Article.css';
 import parse from 'html-react-parser';
 
-export default function MediaCard(props) {
+export default function Article(props) {
   const entities = {
     '&#039;': "'",
     '&quot;': '"',
@@ -24,7 +24,9 @@ export default function MediaCard(props) {
     (match) => entities[match]
   );
   const articleBody = parse(props.body);
-
+  const articleUrl = props.url;
+  console.log(props);
+  console.log('articleUrl ', articleUrl);
   // console.log('articleTitle ', articleTitle);
   // console.log('articleBody ', articleBody);
 
@@ -54,10 +56,12 @@ export default function MediaCard(props) {
               >
                 {formattedDate.substring(3)}
               </Typography>
-              <Typography gutterBottom variant="h5" component="div">
-                <b>{articleTitle}</b>
+              <Typography gutterBottom variant="h6" component="div">
+                <a href={articleUrl} target="_blank">
+                  <b>{articleTitle}</b>
+                </a>
               </Typography>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom variant="h6" component="div">
                 {props.source}
               </Typography>
             </div>

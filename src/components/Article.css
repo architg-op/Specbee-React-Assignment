@@ -17,3 +17,8 @@
   #right {
     flex: 1;
   }
+
+  a:link {
+    color: black;
+    text-decoration: none
+  }
