@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MyContext } from './MyContext';
 import './App.css';
 
@@ -9,10 +9,16 @@ import LinearProgress from '@mui/material/LinearProgress';
 function App() {
   const [articles, setArticles] = useState([]);
   const [dateApplied, setDateApplied] = useState(false);
-  const [apiLoader, setApiLoader] = useState(false);
   const [filtersChecked, setFiltersChecked] = useState([]);
+  const [apiLoader, setApiLoader] = useState(false);
 
-  // console.log('apiLoader ', apiLoader);
+  useEffect(() => {
+    setApiLoader(true);
+    fetch('https://dev-storm-rest-api.pantheonsite.io/api/v1/news')
+      .then((res) => res.json())
+      .then((data) => setArticles(data))
+      .then(() => setApiLoader(false));
+  }, []);
 
   return (
     <MyContext.Provider
@@ -21,16 +27,14 @@ function App() {
         setArticles,
         dateApplied,
         setDateApplied,
-        apiLoader,
-        setApiLoader,
         filtersChecked,
         setFiltersChecked,
       }}
     >
-      <div className="mainwrapper">
-        {apiLoader ? (
-          <LinearProgress />
-        ) : (
+      {apiLoader ? (
+        <LinearProgress />
+      ) : (
+        <div className="mainwrapper">
           <div id="wrapper">
             <div id="left">
               <Filters />
@@ -39,8 +43,8 @@ function App() {
               <Articles />
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </MyContext.Provider>
   );
 }

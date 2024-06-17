@@ -4,14 +4,8 @@ import Pagination from '@mui/material/Pagination';
 import { MyContext } from '../MyContext';
 
 function Articles() {
-  const {
-    articles,
-    setArticles,
-    filtersChecked,
-    setFiltersChecke,
-    apiLoader,
-    setApiLoader,
-  } = useContext(MyContext);
+  const { articles, setArticles, filtersChecked, setFiltersChecked } =
+    useContext(MyContext);
   filtersChecked.includes('Title')
     ? articles.sort(function (a, b) {
         var textA = a.title.toUpperCase();
@@ -25,14 +19,6 @@ function Articles() {
       });
 
   console.log('filtersChecked', filtersChecked);
-
-  useEffect(() => {
-    // setApiLoader(true);
-    fetch('https://dev-storm-rest-api.pantheonsite.io/api/v1/news')
-      .then((res) => res.json())
-      .then((data) => setArticles(data));
-    // .then(() => setApiLoader(false));
-  }, []);
 
   // console.log(articles);
 

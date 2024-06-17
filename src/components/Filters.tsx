@@ -1,4 +1,4 @@
-import { useState, React, useContext } from 'react';
+import { useState, React, useContext, useEffect } from 'react';
 import { MyContext } from '../MyContext.tsx';
 import { Checkbox } from '@mui/material/Checkbox';
 
@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 export default function Filters() {
   const { articles, setArticles } = useContext(MyContext);
-  //   console.log('articles ', articles);
+
   function eliminateDuplicates(numbers) {
     const sortedArray = [];
 
