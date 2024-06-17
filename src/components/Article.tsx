@@ -16,8 +16,8 @@ export default function MediaCard(props) {
     '&amp;': '&',
     '&uuml;': 'ü',
   };
-  let formattedDate = new Date(props.date);
-  formattedDate = formattedDate.toDateString();
+  let formattedDate = props.date && new Date(props.date);
+  formattedDate = formattedDate && formattedDate.toDateString();
   // console.log(`formattedDate `, formattedDate);
   const articleTitle = props?.title.replace(
     /&#?\w+;/,
