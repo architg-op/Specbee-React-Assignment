@@ -27,7 +27,7 @@ export default function AuthorCheckboxList(props) {
     setAuthorsChecked(newChecked);
   };
 
-  console.log('authorsChecked ', authorsChecked);
+  // console.log('authorsChecked ', authorsChecked);
 
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>

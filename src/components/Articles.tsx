@@ -6,7 +6,7 @@ import { MyContext } from '../MyContext';
 function Articles() {
   const { articles, categoriesChecked, authorsChecked, filtersChecked } =
     useContext(MyContext);
-  console.log('filtersChecked ', filtersChecked);
+  // console.log('filtersChecked ', filtersChecked);
   let filteredArticles = articles;
   filteredArticles.sort(function (b, a) {
     const textA = a.date.toUpperCase();
@@ -28,9 +28,9 @@ function Articles() {
 
   filtersChecked.length && filtersChecked[filtersChecked.length - 1] === 'Date'
     ? filteredArticles.sort(function (a, b) {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateA < dateB ? -1 : dateA > dateB ? 1 : 0;
+        const textA = a.date.toUpperCase();
+        const textB = b.date.toUpperCase();
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
       })
     : null;
 
@@ -40,15 +40,11 @@ function Articles() {
         const textB = b.title.toUpperCase();
         return textA < textB ? -1 : textA > textB ? 1 : 0;
       })
-    : filteredArticles.sort(function (b, a) {
-        const textA = a.title.toUpperCase();
-        const textB = b.title.toUpperCase();
-        return textA < textB ? -1 : textA > textB ? 1 : 0;
-      });
+    : null;
 
   // console.log('filtersChecked', filtersChecked);
 
-  console.log('filtered articles length', filteredArticles.length);
+  // console.log('filtered articles length', filteredArticles.length);
 
   return (
     <>

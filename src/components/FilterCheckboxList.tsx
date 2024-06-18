@@ -7,6 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import { MyContext } from '../MyContext.tsx';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 export default function FilterCheckboxList(props) {
@@ -27,7 +28,7 @@ export default function FilterCheckboxList(props) {
     setFiltersChecked(newChecked);
   };
 
-  console.log('filtersChecked ', filtersChecked);
+  // console.log('filtersChecked ', filtersChecked);
 
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -41,9 +42,13 @@ export default function FilterCheckboxList(props) {
               filtersChecked.includes(value) &&
               (value === 'Date' || value === 'Title') ? (
                 <IconButton edge="end" aria-label="comments">
+                  <ArrowUpwardIcon />
+                </IconButton>
+              ) : (
+                <IconButton edge="end" aria-label="comments">
                   <ArrowDownwardIcon />
                 </IconButton>
-              ) : null
+              )
             }
             disablePadding
           >

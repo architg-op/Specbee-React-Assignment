@@ -27,7 +27,7 @@ export default function CategoryCheckboxList(props) {
     setCategoriesChecked(newChecked);
   };
 
-  console.log('categoriesChecked ', categoriesChecked);
+  // console.log('categoriesChecked ', categoriesChecked);
 
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>

@@ -25,8 +25,6 @@ export default function Article(props) {
   );
   const articleBody = parse(props.body);
   const articleUrl = props.url;
-  console.log(props);
-  console.log('articleUrl ', articleUrl);
   // console.log('articleTitle ', articleTitle);
   // console.log('articleBody ', articleBody);
 
