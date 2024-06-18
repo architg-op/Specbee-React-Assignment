@@ -7,7 +7,7 @@ function Articles() {
   const { articles, categoriesChecked, authorsChecked, filtersChecked } =
     useContext(MyContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(5);
+  const [articlesPerPage, setArticlesPerPage] = useState(5);
   // console.log('filtersChecked ', filtersChecked);
   let filteredArticles = articles;
   filteredArticles.sort(function (b, a) {
@@ -44,9 +44,12 @@ function Articles() {
       })
     : null;
 
-  // console.log('filtersChecked', filtersChecked);
-
-  // console.log('filtered articles length', filteredArticles.length);
+  const indexOfLastArticle = currentPage * articlesPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+  const currentArticles = articles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
 
   const handlePagination = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -54,8 +57,8 @@ function Articles() {
 
   return (
     <>
-      {filteredArticles.length ? (
-        filteredArticles?.map((article) => {
+      {currentArticles.length ? (
+        currentArticles?.map((article) => {
           return (
             <Article
               date={article.date}
@@ -81,7 +84,7 @@ function Articles() {
       )}
       <Pagination
         length={articles.length}
-        postsPerPage={postsPerPage}
+        articlesPerPage={articlesPerPage}
         handlePagination={handlePagination}
         currentPage={currentPage}
       />

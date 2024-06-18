@@ -1,14 +1,14 @@
 import './Pagination.css';
 
 const Pagination = ({
-  postsPerPage,
+  articlesPerPage,
   length,
   currentPage,
   handlePagination,
 }) => {
-  const paginationNumbers = [];
+  let paginationNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(length / postsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(length / articlesPerPage); i++) {
     paginationNumbers.push(i);
   }
 
@@ -18,7 +18,7 @@ const Pagination = ({
         <button
           key={pageNumber}
           className={currentPage === pageNumber ? 'active' : ''}
-          onClick={handlePagination}
+          onClick={() => handlePagination(pageNumber)}
         >
           {pageNumber}
         </button>
