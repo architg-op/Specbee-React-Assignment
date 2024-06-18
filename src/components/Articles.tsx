@@ -1,11 +1,13 @@
 import { useState, React, useContext, useEffect } from 'react';
 import Article from './Article';
-import Pagination from '@mui/material/Pagination';
 import { MyContext } from '../MyContext';
+import Pagination from './Pagination.tsx';
 
 function Articles() {
   const { articles, categoriesChecked, authorsChecked, filtersChecked } =
     useContext(MyContext);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(5);
   // console.log('filtersChecked ', filtersChecked);
   let filteredArticles = articles;
   filteredArticles.sort(function (b, a) {
@@ -46,6 +48,10 @@ function Articles() {
 
   // console.log('filtered articles length', filteredArticles.length);
 
+  const handlePagination = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <>
       {filteredArticles.length ? (
@@ -73,6 +79,12 @@ function Articles() {
           No result found for Selection
         </div>
       )}
+      <Pagination
+        length={articles.length}
+        postsPerPage={postsPerPage}
+        handlePagination={handlePagination}
+        currentPage={currentPage}
+      />
     </>
   );
 }

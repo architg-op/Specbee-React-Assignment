@@ -10,11 +10,18 @@ function Home() {
   const { setArticles } = useContext(MyContext);
 
   useEffect(() => {
-    setApiLoader(true);
-    fetch('https://dev-storm-rest-api.pantheonsite.io/api/v1/news')
-      .then((res) => res.json())
-      .then((data) => setArticles(data))
-      .then(() => setApiLoader(false));
+    const fetchArticles = async () => {
+      setApiLoader(true);
+      try {
+        await fetch('https://dev-storm-rest-api.pantheonsite.io/api/v1/news')
+          .then((res) => res.json())
+          .then((data) => setArticles(data))
+          .then(() => setApiLoader(false));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchArticles();
   }, []);
 
   return (
