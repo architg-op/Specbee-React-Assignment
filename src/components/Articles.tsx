@@ -46,7 +46,7 @@ function Articles() {
 
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles.slice(
+  const currentArticles = filteredArticles.slice(
     indexOfFirstArticle,
     indexOfLastArticle
   );
@@ -83,7 +83,7 @@ function Articles() {
         </div>
       )}
       <Pagination
-        length={articles.length}
+        length={filteredArticles.length}
         articlesPerPage={articlesPerPage}
         handlePagination={handlePagination}
         currentPage={currentPage}
