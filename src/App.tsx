@@ -1,26 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { MyContext } from './MyContext';
 import './App.css';
 
-import Articles from './components/Articles';
-import Filters from './components/Filters';
-import LinearProgress from '@mui/material/LinearProgress';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Switch,
+} from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './components/Home';
+import InvalidPage from './components/InvalidPage';
+
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route path="/" element={<Home />}>
+//       <Route path="*" element={<InvalidPage />} />
+//     </Route>
+//   )
+// );
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [dateApplied, setDateApplied] = useState(false);
-  const [apiLoader, setApiLoader] = useState(false);
   const [categoriesChecked, setCategoriesChecked] = useState([]);
   const [authorsChecked, setAuthorsChecked] = useState([]);
   const [filtersChecked, setFiltersChecked] = useState([]);
-
-  useEffect(() => {
-    setApiLoader(true);
-    fetch('https://dev-storm-rest-api.pantheonsite.io/api/v1/news')
-      .then((res) => res.json())
-      .then((data) => setArticles(data))
-      .then(() => setApiLoader(false));
-  }, []);
 
   return (
     <MyContext.Provider
@@ -37,20 +45,13 @@ function App() {
         setFiltersChecked,
       }}
     >
-      {apiLoader ? (
-        <LinearProgress />
-      ) : (
-        <div className="mainwrapper">
-          <div id="wrapper">
-            <div id="left">
-              <Filters />
-            </div>
-            <div id="right">
-              <Articles />
-            </div>
-          </div>
-        </div>
-      )}
+      {/* <RouterProvider router={router} /> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Specbee-React-Assignment/" element={<Home />} />
+          <Route path="*" element={<InvalidPage />} />
+        </Routes>
+      </BrowserRouter>
     </MyContext.Provider>
   );
 }

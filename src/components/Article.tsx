@@ -29,12 +29,16 @@ export default function Article(props) {
   // console.log('articleBody ', articleBody);
 
   return (
-    <>
+    <a href={articleUrl} target="_blank">
       <Card>
         <CardMedia
           sx={{ height: 40 }}
-          image={props.image}
-          title="green iguana"
+          image={
+            props.image
+              ? props.image
+              : 'https://www.kindpng.com/picc/m/699-6994704_newspaper-news-journal-headline-article-paper-transparent-background.png'
+          }
+          title={props.title}
         />
         <CardContent>
           <div id="wrapper">
@@ -53,9 +57,10 @@ export default function Article(props) {
                 {formattedDate.substring(3)}
               </Typography>
               <Typography gutterBottom variant="h6" component="div">
-                <a href={articleUrl} target="_blank">
-                  <b>{articleTitle}</b>
-                </a>
+                <b>{articleTitle}</b>
+
+                {/* <a href={articleUrl} target="_blank">
+                </a> */}
               </Typography>
             </div>
             <div id="right">
@@ -76,6 +81,6 @@ export default function Article(props) {
         </CardActions>
       </Card>
       <Divider />
-    </>
+    </a>
   );
 }
