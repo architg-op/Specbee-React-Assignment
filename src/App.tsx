@@ -2,26 +2,9 @@ import { useState } from 'react';
 import { MyContext } from './MyContext';
 import './App.css';
 
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Switch,
-} from 'react-router-dom';
-import Layout from './components/Layout';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import InvalidPage from './components/InvalidPage';
-
-// const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route path="/" element={<Home />}>
-//       <Route path="*" element={<InvalidPage />} />
-//     </Route>
-//   )
-// );
 
 function App() {
   const [articles, setArticles] = useState([]);

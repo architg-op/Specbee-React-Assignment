@@ -54,7 +54,7 @@ export default function Article(props) {
                 color="text.secondary"
                 component="div"
               >
-                {formattedDate.substring(3)}
+                {formattedDate ? formattedDate.substring(3) : 'Undated'}
               </Typography>
               <Typography gutterBottom variant="h6" component="div">
                 <b>{articleTitle}</b>
