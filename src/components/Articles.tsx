@@ -10,6 +10,9 @@ function Articles() {
   const [articlesPerPage, setArticlesPerPage] = useState(5);
   // console.log('filtersChecked ', filtersChecked);
   let filteredArticles = articles;
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [categoriesChecked, authorsChecked, filtersChecked]);
   filteredArticles.sort(function (b, a) {
     const textA = a.date.toUpperCase();
     const textB = b.date.toUpperCase();
