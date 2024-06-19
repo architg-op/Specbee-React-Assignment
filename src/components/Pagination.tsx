@@ -16,7 +16,7 @@ const Pagination = ({
     <div className="pagination">
       <button
         onClick={() =>
-          (currentPage = currentPage > 0 ? currentPage - 1 : currentPage)
+          currentPage > 1 && handlePagination((currentPage = currentPage - 1))
         }
       >
         &laquo;
@@ -32,10 +32,8 @@ const Pagination = ({
       ))}
       <button
         onClick={() =>
-          (currentPage =
-            currentPage < paginationNumbers.length
-              ? currentPage + 1
-              : currentPage)
+          currentPage < paginationNumbers.length &&
+          handlePagination((currentPage = currentPage + 1))
         }
       >
         &raquo;
