@@ -7,7 +7,7 @@ function Articles() {
   const { articles, categoriesChecked, authorsChecked, filtersChecked } =
     useContext(MyContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [articlesPerPage, setArticlesPerPage] = useState(5);
+  const [articlesPerPage] = useState(5);
   // console.log('filtersChecked ', filtersChecked);
   let filteredArticles = articles;
   useEffect(() => {

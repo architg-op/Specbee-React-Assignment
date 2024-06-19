@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { MyContext } from '../MyContext.tsx';
 
 import CategoryCheckboxList from './CategoryCheckboxList.tsx';
