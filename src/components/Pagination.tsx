@@ -19,7 +19,7 @@ const Pagination = ({
           currentPage > 1 && handlePagination((currentPage = currentPage - 1))
         }
       >
-        &laquo;
+        &lt;
       </button>
       {paginationNumbers.map((pageNumber) => (
         <button
@@ -36,7 +36,7 @@ const Pagination = ({
           handlePagination((currentPage = currentPage + 1))
         }
       >
-        &raquo;
+        &gt;
       </button>
     </div>
   );
