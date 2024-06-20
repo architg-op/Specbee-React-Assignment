@@ -15,6 +15,7 @@ const Pagination = ({
   return (
     <div className="pagination">
       <button
+        disabled={currentPage === 1 ? true : false}
         onClick={() =>
           currentPage > 1 && handlePagination((currentPage = currentPage - 1))
         }
@@ -31,6 +32,7 @@ const Pagination = ({
         </button>
       ))}
       <button
+        disabled={currentPage === paginationNumbers.length ? true : false}
         onClick={() =>
           currentPage < paginationNumbers.length &&
           handlePagination((currentPage = currentPage + 1))
